@@ -366,7 +366,7 @@
         isLoading = true;
 
         try {
-            const response = await fetch('./mods.json');
+            const response = await fetch('/ModDownloadWeb/mods.json');
             if (!response.ok) {
                 throw new Error(`HTTP error! status: ${response.status}`);
             }
