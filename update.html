@@ -1,0 +1,723 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jesseleuk Mod Center</title>
+    <style>
+        :root {
+            --primary: #7c4dff;
+            --primary-dark: #3700b3;
+            --secondary: #00e5ff;
+            --background: #0f0f13;
+            --surface: #1a1a22;
+            --surface-raised: #252532;
+            --on-background: #ffffff;
+            --on-surface: #e0e0e0;
+            --error: #ff5c8d;
+            --card-shadow: 0 8px 12px rgba(0, 0, 0, 0.2);
+            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--background);
+            color: var(--on-background);
+            line-height: 1.6;
+            background-image: radial-gradient(circle at top right, rgba(124, 77, 255, 0.1), transparent 60%), 
+                              radial-gradient(circle at bottom left, rgba(0, 229, 255, 0.05), transparent 60%);
+            background-attachment: fixed;
+        }
+        
+        header {
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+            color: white;
+            text-align: center;
+            padding: 3rem 1rem;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        header h1 {
+            position: relative;
+            z-index: 2;
+            font-size: 2.5rem;
+            letter-spacing: 1px;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+        }
+        
+        header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIiBzdHJva2U9InJnYmEoMjU1LDI1NSwyNTUsMC4wNSkiIHN0cm9rZS13aWR0aD0iMiIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIj48cGF0aCBkPSJNMTggMTBINnY0aDEydi00eiI+PC9wYXRoPjxwYXRoIGQ9Ik0yMCA2SDRWOGgxNlY2eiI+PC9wYXRoPjxwYXRoIGQ9Ik0yMiAySDJ2MmgyMFYyeiI+PC9wYXRoPjxwYXRoIGQ9Ik0yMCAxNEg0djJoMTZ2LTJ6Ij48L3BhdGg+PHBhdGggZD0iTTE4IDE4SDZ2MmgxMnYtMnoiPjwvcGF0aD48L3N2Zz4=');
+            opacity: 0.1;
+            z-index: 1;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+        
+        .search-container {
+            margin-bottom: 2rem;
+            position: relative;
+        }
+        
+        #search-input {
+            width: 100%;
+            padding: 1rem 1.2rem;
+            font-size: 1rem;
+            border: none;
+            border-radius: 12px;
+            background-color: var(--surface);
+            color: var(--on-surface);
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            transition: var(--transition);
+        }
+        
+        #search-input:focus {
+            outline: none;
+            box-shadow: 0 0 0 2px var(--primary);
+            background-color: var(--surface-raised);
+        }
+        
+        #search-input::placeholder {
+            color: rgba(255, 255, 255, 0.5);
+        }
+        
+        .mod-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 2rem;
+        }
+        
+        .mod-card {
+            background-color: var(--surface);
+            border-radius: 12px;
+            overflow: hidden;
+            transition: var(--transition);
+            box-shadow: var(--card-shadow);
+            border: 1px solid rgba(255, 255, 255, 0.03);
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .mod-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 12px 20px rgba(0, 0, 0, 0.3);
+            background-color: var(--surface-raised);
+        }
+        
+        .mod-image {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            background-color: #333;
+            transition: var(--transition);
+        }
+        
+        .mod-card:hover .mod-image {
+            opacity: 0.9;
+        }
+        
+        .mod-content {
+            padding: 1.8rem;
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
+        }
+        
+        .mod-title {
+            font-size: 1.4rem;
+            font-weight: bold;
+            margin-bottom: 0.8rem;
+            color: white;
+            position: relative;
+            padding-bottom: 0.5rem;
+        }
+        
+        .mod-title::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            height: 3px;
+            width: 60px;
+            background: linear-gradient(90deg, var(--secondary), transparent);
+            border-radius: 4px;
+        }
+        
+        .mod-description {
+            color: var(--on-surface);
+            margin-bottom: 1.5rem;
+            font-size: 0.95rem;
+            opacity: 0.9;
+            flex-grow: 1;
+        }
+        
+        .mod-meta {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.9rem;
+            color: rgba(255, 255, 255, 0.6);
+            margin-bottom: 1.5rem;
+            padding: 0.5rem 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .mod-buttons {
+            display: flex;
+            gap: 0.8rem;
+            margin-top: auto;
+        }
+        
+        .download-btn {
+            display: block;
+            width: 100%;
+            padding: 0.9rem;
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+            color: white;
+            text-align: center;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: bold;
+            transition: var(--transition);
+            border: none;
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+        }
+        
+        .download-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, var(--primary-dark), var(--primary));
+            opacity: 0;
+            transition: var(--transition);
+            z-index: -1;
+        }
+        
+        .download-btn:hover::before {
+            opacity: 1;
+        }
+        
+        .download-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(124, 77, 255, 0.4);
+        }
+        
+        .version-history-btn {
+            padding: 0.9rem;
+            background-color: rgba(124, 77, 255, 0.1);
+            color: var(--primary);
+            text-align: center;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: bold;
+            border: 1px solid rgba(124, 77, 255, 0.3);
+            transition: var(--transition);
+            flex: 0 0 auto;
+            width: auto;
+        }
+        
+        .version-history-btn:hover {
+            background-color: rgba(124, 77, 255, 0.2);
+            transform: translateY(-2px);
+        }
+        
+        footer {
+            background-color: var(--surface);
+            text-align: center;
+            padding: 2rem;
+            margin-top: 4rem;
+            color: var(--on-surface);
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            position: relative;
+        }
+        
+        footer::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, 
+                transparent, 
+                rgba(124, 77, 255, 0.3), 
+                rgba(0, 229, 255, 0.3), 
+                transparent
+            );
+        }
+        
+        @media (max-width: 768px) {
+            .mod-grid {
+                grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+                gap: 1.5rem;
+            }
+            
+            .container {
+                padding: 1.5rem;
+            }
+        }
+        
+        .tab-container {
+            margin-bottom: 2.5rem;
+        }
+        
+        .tabs {
+            display: flex;
+            margin-bottom: 1rem;
+            background-color: var(--surface);
+            border-radius: 12px;
+            padding: 0.3rem;
+            overflow: hidden;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+        
+        .tab {
+            padding: 0.8rem 1.5rem;
+            cursor: pointer;
+            background: transparent;
+            border: none;
+            color: var(--on-surface);
+            font-weight: bold;
+            border-radius: 8px;
+            transition: var(--transition);
+            flex: 1;
+            text-align: center;
+        }
+        
+        .tab:hover:not(.active) {
+            background-color: rgba(255, 255, 255, 0.05);
+        }
+        
+        .tab.active {
+            color: white;
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+        }
+        
+        .readme {
+            background-color: var(--surface);
+            padding: 2.5rem;
+            border-radius: 12px;
+            margin-top: 3rem;
+            box-shadow: var(--card-shadow);
+            border: 1px solid rgba(255, 255, 255, 0.03);
+        }
+        
+        .readme h2 {
+            margin-bottom: 1.5rem;
+            color: var(--secondary);
+            position: relative;
+            padding-bottom: 0.8rem;
+        }
+        
+        .readme h2::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 80px;
+            height: 3px;
+            background: linear-gradient(90deg, var(--secondary), transparent);
+            border-radius: 4px;
+        }
+        
+        .readme p {
+            margin-bottom: 1rem;
+            color: var(--on-surface);
+            opacity: 0.9;
+        }
+        
+        .version-modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            backdrop-filter: blur(5px);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+        }
+        
+        .modal-content {
+            background: var(--surface);
+            padding: 2.5rem;
+            border-radius: 12px;
+            max-width: 600px;
+            width: 90%;
+            max-height: 80vh;
+            overflow-y: auto;
+            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.4);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+        
+        .modal-content h2 {
+            margin-bottom: 1.5rem;
+            color: var(--secondary);
+            position: relative;
+            padding-bottom: 0.8rem;
+        }
+        
+        .modal-content h2::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 100px;
+            height: 3px;
+            background: linear-gradient(90deg, var(--secondary), transparent);
+            border-radius: 4px;
+        }
+        
+        .version-list {
+            margin: 1.5rem 0;
+        }
+        
+        .version-item {
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 1.2rem 0;
+        }
+        
+        .version-header {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 0.8rem;
+        }
+        
+        .version-number {
+            font-weight: bold;
+            color: var(--secondary);
+            font-size: 1.1rem;
+        }
+        
+        .version-date {
+            color: rgba(255, 255, 255, 0.6);
+        }
+        
+        .version-changelog {
+            margin: 0.8rem 0 1.2rem;
+            padding-left: 1rem;
+            border-left: 2px solid rgba(0, 229, 255, 0.3);
+        }
+        
+        .close-btn {
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+            color: white;
+            border: none;
+            padding: 0.8rem 1.5rem;
+            border-radius: 8px;
+            cursor: pointer;
+            margin-top: 1.5rem;
+            font-weight: bold;
+            transition: var(--transition);
+        }
+        
+        .close-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(124, 77, 255, 0.4);
+        }
+        
+        .error-message {
+            color: var(--error);
+            text-align: center;
+            padding: 3rem;
+            background: var(--surface);
+            border-radius: 12px;
+            box-shadow: var(--card-shadow);
+            border: 1px solid rgba(255, 92, 141, 0.3);
+        }
+        
+        .no-results {
+            text-align: center;
+            padding: 3rem;
+            color: var(--on-surface);
+            background: var(--surface);
+            border-radius: 12px;
+            box-shadow: var(--card-shadow);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+        
+        .download-notification {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: var(--surface-raised);
+            padding: 1.2rem;
+            border-radius: 12px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+            z-index: 1000;
+            animation: slideIn 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+        
+        .notification-content {
+            color: var(--on-surface);
+        }
+        
+        .progress-bar {
+            margin-top: 0.8rem;
+            height: 6px;
+            background: rgba(124, 77, 255, 0.2);
+            border-radius: 3px;
+            overflow: hidden;
+        }
+        
+        .progress {
+            height: 100%;
+            background: linear-gradient(90deg, var(--secondary), var(--primary));
+            animation: progress 3s cubic-bezier(0.4, 0, 0.2, 1);
+            border-radius: 3px;
+        }
+        
+        @keyframes slideIn {
+            from { transform: translateX(100%); opacity: 0; }
+            to { transform: translateX(0); opacity: 1; }
+        }
+        
+        @keyframes progress {
+            from { width: 0; }
+            to { width: 100%; }
+        }
+        
+        ::-webkit-scrollbar {
+            width: 8px;
+            height: 8px;
+        }
+        
+        ::-webkit-scrollbar-track {
+            background: var(--surface);
+        }
+        
+        ::-webkit-scrollbar-thumb {
+            background: var(--primary-dark);
+            border-radius: 4px;
+        }
+        
+        ::-webkit-scrollbar-thumb:hover {
+            background: var(--primary);
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Jesseleuk Mod Center</h1>
+    </header>
+    
+    <div class="container">
+        <div class="search-container">
+            <input type="text" id="search-input" placeholder="Search mods...">
+        </div>
+        
+        <div class="tab-container">
+            <div class="tabs">
+                <button class="tab active" data-category="all">All Mods</button>
+                <button class="tab" data-category="recent">Recently Added</button>
+                <button class="tab" data-category="updated">Recently Updated</button>
+            </div>
+        </div>
+        
+        <div class="mod-grid" id="mod-grid"></div>
+        
+        <div class="readme">
+            <h2>About these mods</h2>
+            <p>These are mods i make beacuse i want to and uhh yeah. These mods sometimes update overtime it depends</p>
+        </div>
+    </div>
+    
+    <footer>
+        <p>© 2025 Jesseleuk. Hosted on GitHub Pages. All mods are provided as-is without warranty.</p>
+    </footer>
+
+    <script>
+    let modsData = [];
+    let isLoading = false;
+
+    async function loadMods() {
+        if (isLoading) return;
+        isLoading = true;
+
+        try {
+            const response = await fetch('/ModDownloadWeb/mods.json');
+            if (!response.ok) {
+                throw new Error(`HTTP error! status: ${response.status}`);
+            }
+            const data = await response.json();
+            modsData = data.mods;
+            renderMods(modsData);
+        } catch (error) {
+            console.error('Error loading mods:', error);
+            document.getElementById('mod-grid').innerHTML = `
+                <div class="error-message">
+                    Failed to load mods. Please try again later.
+                </div>
+            `;
+        } finally {
+            isLoading = false;
+        }
+    }
+
+    // Load mods only once when the page loads
+    window.addEventListener('DOMContentLoaded', loadMods);
+
+    function renderMods(mods) {
+        const modGrid = document.getElementById('mod-grid');
+        modGrid.innerHTML = '';
+        
+        if (mods.length === 0) {
+            modGrid.innerHTML = '<div class="no-results">No mods found</div>';
+            return;
+        }
+        
+        mods.forEach(mod => {
+            const latestVersion = mod.versions[0];
+            const modCard = document.createElement('div');
+            modCard.className = 'mod-card';
+            
+            modCard.innerHTML = `
+                <img src="${mod.image || '/ModDownloadWeb/images/placeholder.jpg'}" 
+                     alt="${mod.title}" 
+                     class="mod-image" 
+                     onerror="this.onerror=null; this.src='/ModDownloadWeb/images/placeholder.jpg'">
+                <div class="mod-content">
+                    <h3 class="mod-title">${mod.title}</h3>
+                    <div class="mod-meta">
+                        <span>Version: ${latestVersion.version}</span>
+                        <span>${latestVersion.date}</span>
+                    </div>
+                    <p class="mod-description">${mod.description}</p>
+                    <div class="mod-buttons">
+                        ${createDownloadButton(latestVersion.downloadUrl)}
+                        <button onclick="showVersionHistory('${mod.id}')" 
+                                class="version-history-btn" 
+                                title="View all versions">
+                            <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
+                                <path d="M8 0L9.5 1.5 3.5 7.5 9.5 13.5 8 15 0 7.5 8 0z"/>
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+            `;
+            
+            modGrid.appendChild(modCard);
+        });
+    }
+
+    function filterMods(category) {
+        let filteredMods = [...modsData];
+        
+        switch(category) {
+            case 'recent':
+                filteredMods.sort((a, b) => new Date(b.date) - new Date(a.date));
+                break;
+            case 'updated':
+                filteredMods.sort((a, b) => new Date(b.versions[0].date) - new Date(a.versions[0].date));
+                break;
+        }
+        
+        renderMods(filteredMods);
+    }
+
+    document.getElementById('search-input').addEventListener('input', function(e) {
+        const searchTerm = e.target.value.toLowerCase();
+        const filteredMods = modsData.filter(mod => 
+            mod.title.toLowerCase().includes(searchTerm) || 
+            mod.description.toLowerCase().includes(searchTerm)
+        );
+        renderMods(filteredMods);
+    });
+
+    document.querySelectorAll('.tab').forEach(tab => {
+        tab.addEventListener('click', function() {
+            document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+            this.classList.add('active');
+            filterMods(this.getAttribute('data-category'));
+        });
+    });
+
+    function showVersionHistory(modId) {
+        const mod = modsData.find(m => m.id === modId);
+        if (!mod) return;
+
+        const modal = document.createElement('div');
+        modal.className = 'version-modal';
+        modal.innerHTML = `
+            <div class="modal-content">
+                <h2>${mod.title} - Version History</h2>
+                <div class="version-list">
+                    ${mod.versions.map(ver => `
+                        <div class="version-item">
+                            <div class="version-header">
+                                <span class="version-number">v${ver.version}</span>
+                                <span class="version-date">${ver.date}</span>
+                            </div>
+                            <p class="version-changelog">${ver.changelog}</p>
+                            ${createDownloadButton(ver.downloadUrl, ver.version)}
+                        </div>
+                    `).join('')}
+                </div>
+                <button onclick="closeModal(this)" class="close-btn">Close</button>
+            </div>
+        `;
+        document.body.appendChild(modal);
+    }
+
+    function closeModal(button) {
+        button.closest('.version-modal').remove();
+    }
+
+    function createDownloadButton(url, version) {
+        return `
+            <a href="${url}" 
+               class="download-btn" 
+               target="_blank"
+               rel="noopener noreferrer"
+               onclick="startDownload(event, '${version}')"
+            >Download${version ? ` v${version}` : ' Latest'}</a>
+        `;
+    }
+
+    function startDownload(event, version) {
+        // Notify user that download is starting
+        const notification = document.createElement('div');
+        notification.className = 'download-notification';
+        notification.innerHTML = `
+            <div class="notification-content">
+                Starting download for version ${version}...
+                <div class="progress-bar">
+                    <div class="progress"></div>
+                </div>
+            </div>
+        `;
+        document.body.appendChild(notification);
+        
+        // Remove notification after 3 seconds
+        setTimeout(() => {
+            notification.remove();
+        }, 3000);
+    }
+</script>
+</body>
+</html>
