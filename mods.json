@@ -1,0 +1,97 @@
+{
+  "mods": [
+    {
+      "id": "1",
+      "title": "Translator mod - Minecraft 1.20.1 fabric",
+      "version": "1.0.2",
+      "date": "Feb 28, 2025",
+      "description": "This mod allows you to comunicate with other players in different languages",
+      "image": "/ModDownloadWeb/images/placeholder.jpg",
+      "downloadUrl": "https://drive.usercontent.google.com/download?id=16JYcVL2rTH2Rnn8GVKMOXePb3D7kc6QN&export=download&authuser=0",
+      "versions": [
+        {
+          "version": "1.0.2",
+          "date": "Feb 28, 2025",
+          "downloadUrl": "https://drive.usercontent.google.com/download?id=16JYcVL2rTH2Rnn8GVKMOXePb3D7kc6QN&export=download&authuser=0",
+          "changelog": "makes the text translator detect shorter messages"
+        },
+        {
+          "version": "1.0.1",
+          "date": "Feb 28, 2025",
+          "downloadUrl": "https://drive.usercontent.google.com/download?id=1B0aQSk1HLPk-5GQ_p_Zgl1JBMwCq-ICH&export=download&authuser=0",
+          "changelog": "Should fix the RejectedExecutionException error"
+        },
+        {
+          "version": "1.0.0",
+          "date": "Feb 28, 2025",
+          "downloadUrl": "https://drive.usercontent.google.com/download?id=19hCSbanEPtZj5VEp-k88smCR2RwoHubo&export=download&authuser=0",
+          "changelog": "Main mod release"
+        }
+      ]
+    },
+    {
+      "id": "2",
+      "title": "TestingMod - Minecraft 1.20.1 fabric",
+      "version": "1.0.1",
+      "date": "Dec 7, 2024",
+      "description": "This mod adds a goofy sword to the game that half works",
+      "image": "/ModDownloadWeb/images/placeholder.jpg",
+      "downloadUrl": "https://drive.usercontent.google.com/download?id=1emCgJ_rDzT7Vl_zvLbgXGEgO93grRnL1&export=download&authuser=0",
+      "versions": [
+        {
+          "version": "1.0.1",
+          "date": "Dec 7, 2024",
+          "downloadUrl": "https://drive.usercontent.google.com/download?id=1emCgJ_rDzT7Vl_zvLbgXGEgO93grRnL1&export=download&authuser=0",
+          "changelog": "Stats change"
+        },
+        {
+          "version": "1.0.0",
+          "date": "Dec 7, 2024",
+          "downloadUrl": "https://drive.usercontent.google.com/download?id=11cmqjytMRjdgZFBNSns342wiOBH1-hPD&export=download&authuser=0",
+          "changelog": "Main mod release"
+        }
+      ]
+    },
+    {
+      "id": "3",
+      "title": "BottleOWator - Minecraft 1.20.1 fabric",
+      "version": "1.1.2",
+      "date": "Oct 1, 2024",
+      "description": "Uhh well this mod was supposed to be a water bottle mod but at the end it turned in to the half working backrooms",
+      "image": "/ModDownloadWeb/images/placeholder.jpg",
+      "downloadUrl": "https://drive.usercontent.google.com/download?id=1Ll7K_IROVp2WYXWdNh4jLob7C9HZcrXR&export=download&authuser=0",
+      "versions": [
+        {
+          "version": "1.1.2",
+          "date": "Oct 1, 2024",
+          "downloadUrl": "https://drive.usercontent.google.com/download?id=1Ll7K_IROVp2WYXWdNh4jLob7C9HZcrXR&export=download&authuser=0",
+          "changelog": "Got no clue what this adds"
+        },
+        {
+          "version": "1.1.0",
+          "date": "???",
+          "downloadUrl": "https://drive.usercontent.google.com/download?id=1axDJh16B7ZegKxSMlozBeeJPCOVM8_v2&export=download&authuser=0",
+          "changelog": "Got no clue what this adds"
+        },
+        {
+          "version": "1.0.2",
+          "date": "???",
+          "downloadUrl": "https://drive.usercontent.google.com/download?id=1NL7uR67ms9_mXT1eINSijRCcDHsm3Uma&export=download&authuser=0",
+          "changelog": "Got no clue what this adds"
+        },
+        {
+          "version": "1.0.1",
+          "date": "???",
+          "downloadUrl": "https://drive.usercontent.google.com/download?id=1WyoYm3phdENZOcVlRDv_O6RNi323oyj9&export=download&authuser=0",
+          "changelog": "Got no clue what this adds"
+        },
+        {
+          "version": "1.0.0",
+          "date": "???",
+          "downloadUrl": "https://drive.usercontent.google.com/download?id=19TAsvjH77kH-kViLyMSXXEI92vahTGWV&export=download&authuser=0",
+          "changelog": "Main mod release"
+        }
+      ]
+    }
+  ]
+}
