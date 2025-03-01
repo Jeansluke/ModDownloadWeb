@@ -124,10 +124,9 @@
         .mod-image {
             width: 100%;
             height: 200px;
-            object-fit: cover; /* Keeping 'cover' to fill the entire space */
+            object-fit: fill; /* This will stretch/squish the image to fill the container */
             background-color: #333;
             transition: var(--transition);
-            object-position: center; /* Ensures the image is centered in the container */
         }
         
         .mod-card:hover .mod-image {
