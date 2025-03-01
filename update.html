@@ -394,6 +394,7 @@
         .modal-content {
             background: var(--surface);
             padding: 2.5rem;
+            padding-top: 1rem; /* Reduced top padding */
             border-radius: 12px;
             max-width: 600px;
             width: 90%;
@@ -453,11 +454,11 @@
             border-left: 2px solid rgba(0, 229, 255, 0.3);
         }
         
-        /* Sticky top close button */
         .modal-header {
             position: sticky;
             top: 0;
             background: var(--surface);
+            padding-top: 1.5rem; /* Added top padding */
             padding-bottom: 1rem;
             z-index: 10;
             display: flex;
@@ -735,7 +736,7 @@
     function showVersionHistory(modId) {
         const mod = modsData.find(m => m.id === modId);
         if (!mod) return;
-
+    
         const modal = document.createElement('div');
         modal.className = 'version-modal';
         modal.innerHTML = `
@@ -761,15 +762,13 @@
                         </div>
                     `).join('')}
                 </div>
-                <button onclick="closeModal(this)" class="close-btn">Close</button>
             </div>
         `;
         document.body.appendChild(modal);
         
-        // Add click event to close modal when clicking outside content
         modal.addEventListener('click', function(e) {
             if (e.target === modal) {
-                closeModal(modal.querySelector('.close-btn'));
+                closeModal(modal.querySelector('.top-close-btn'));
             }
         });
     }
