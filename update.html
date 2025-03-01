@@ -781,13 +781,22 @@
                     </button>
                 </div>
                 <div class="version-list">
-                    ${mod.versions.map(ver => `
+                    <div class="version-item">
+                        <div class="version-header">
+                            <span class="version-number">v${mod.versions[0].version}</span>
+                            <span class="version-date">${mod.versions[0].date}</span>
+                        </div>
+                        <p class="version-changelog">${mod.versions[0].changelog || 'Got no clue what this adds'}</p>
+                        ${createDownloadButton(mod.versions[0].downloadUrl, mod.versions[0].version)}
+                    </div>
+                    
+                    ${mod.versions.slice(1).map(ver => `
                         <div class="version-item">
                             <div class="version-header">
                                 <span class="version-number">v${ver.version}</span>
                                 <span class="version-date">${ver.date}</span>
                             </div>
-                            <p class="version-changelog">${ver.changelog}</p>
+                            <p class="version-changelog">${ver.changelog || 'Got no clue what this adds'}</p>
                             ${createDownloadButton(ver.downloadUrl, ver.version)}
                         </div>
                     `).join('')}
