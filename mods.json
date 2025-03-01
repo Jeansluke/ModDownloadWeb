@@ -92,6 +92,16 @@
           "changelog": "Main mod release"
         }
       ]
+    },
+    {
+      "id": "4",
+      "title": "Im empty",
+      "version": "",
+      "date": "",
+      "description": "Testing",
+      "image": "/ModDownloadWeb/images/placeholder.jpg",
+      "downloadUrl": "",
+      "versions": []
     }
   ]
 }
