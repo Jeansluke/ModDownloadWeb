@@ -389,12 +389,12 @@
             justify-content: center;
             align-items: center;
             z-index: 1000;
+            overflow: hidden;
         }
         
         .modal-content {
             background: var(--surface);
             padding: 2.5rem;
-            padding-top: 1rem; /* Reduced top padding */
             border-radius: 12px;
             max-width: 600px;
             width: 90%;
@@ -403,6 +403,7 @@
             box-shadow: 0 12px 40px rgba(0, 0, 0, 0.4);
             border: 1px solid rgba(255, 255, 255, 0.05);
             position: relative;
+            margin: 2rem; 
         }
         
         .modal-content h2 {
@@ -458,7 +459,6 @@
             position: sticky;
             top: 0;
             background: var(--surface);
-            padding-top: 1.5rem; /* Added top padding */
             padding-bottom: 1rem;
             z-index: 10;
             display: flex;
@@ -737,6 +737,10 @@
         const mod = modsData.find(m => m.id === modId);
         if (!mod) return;
     
+        // Remove any existing modals first
+        const existingModals = document.querySelectorAll('.version-modal');
+        existingModals.forEach(modal => modal.remove());
+    
         const modal = document.createElement('div');
         modal.className = 'version-modal';
         modal.innerHTML = `
@@ -766,6 +770,7 @@
         `;
         document.body.appendChild(modal);
         
+        // Add click event to close modal when clicking outside content
         modal.addEventListener('click', function(e) {
             if (e.target === modal) {
                 closeModal(modal.querySelector('.top-close-btn'));
