@@ -10,6 +10,12 @@
       "downloadUrl": "https://drive.usercontent.google.com/download?id=16JYcVL2rTH2Rnn8GVKMOXePb3D7kc6QN&export=download&authuser=0",
       "versions": [
         {
+          "version": "1.0.3",
+          "date": "Mar 2, 2025",
+          "downloadUrl": "https://drive.usercontent.google.com/download?id=1Ie1VWbqmxY6W_vd8zh0XJogcy3M7MO5h&export=download&authuser=0",
+          "changelog": "Removed the not translating short messages. For a Future update. And for convenience"
+        },
+        {
           "version": "1.0.2",
           "date": "Feb 28, 2025",
           "downloadUrl": "https://drive.usercontent.google.com/download?id=16JYcVL2rTH2Rnn8GVKMOXePb3D7kc6QN&export=download&authuser=0",
