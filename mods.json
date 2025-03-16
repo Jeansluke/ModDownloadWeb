@@ -104,7 +104,7 @@
       "title": "Sticky Whispy - Minecraft 1.20.1 fabric",
       "version": "1.0.0",
       "date": "Mar 16, 2025",
-      "description": "Adds a new keybind that allowes you to make the /whisper command stuck. to make it work to /w <name> first and send a whisper and than do the keybind button. default <B>.",
+      "description": "Adds a new keybind that allowes you to make the /whisper command stuck. to make it work to /w <name> first and send a whisper and than do the new keybind button.",
       "image": "",
       "downloadUrl": "https://drive.usercontent.google.com/download?id=1gjGDpoAI94ZvKAZq8DQeZvw9BoqpnPzC&export=download&authuser=0",
       "versions": [
