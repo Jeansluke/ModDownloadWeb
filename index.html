@@ -663,7 +663,7 @@
         isLoading = true;
 
         try {
-            const response = await fetch('/ModDownloadWeb/mods.json');
+            const response = await fetch('/UniversalWeb/mods.json');
             if (!response.ok) {
                 throw new Error(`HTTP error! status: ${response.status}`);
             }
@@ -700,10 +700,10 @@
             modCard.className = 'mod-card';
             
             modCard.innerHTML = `
-                <img src="${mod.image || '/ModDownloadWeb/images/placeholder.jpg'}" 
+                <img src="${mod.image || '/UniversalWeb/images/placeholder.jpg'}" 
                      alt="${mod.title}" 
                      class="mod-image" 
-                     onerror="this.onerror=null; this.src='/ModDownloadWeb/images/placeholder.jpg'">
+                     onerror="this.onerror=null; this.src='/UniversalWeb/images/placeholder.jpg'">
                 <div class="mod-content">
                     <h3 class="mod-title">${mod.title}</h3>
                     <div class="mod-meta">
