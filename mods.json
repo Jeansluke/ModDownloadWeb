@@ -2,13 +2,19 @@
   "mods": [
     {
       "id": "1",
-      "title": "Translator mod - Minecraft 1.20.1 fabric",
-      "version": "1.0.2",
+      "title": "Translator mod - Minecraft 1.20.1 fabric (serversided only)",
+      "version": "1.0.0",
       "date": "Feb 28, 2025",
       "description": "This mod allows you to comunicate with other players in different languages.        - thumbnail by Baldi",
       "image": "/UniversalWeb/images/translator.png",
       "downloadUrl": "https://drive.usercontent.google.com/download?id=16JYcVL2rTH2Rnn8GVKMOXePb3D7kc6QN&export=download&authuser=0",
       "versions": [
+        {
+          "version": "1.1.0",
+          "date": "Mar 2, 2025",
+          "downloadUrl": "https://drive.usercontent.google.com/download?id=1748yDdqg1bYtrMekIE-RF10XISEZcfxo&export=download&authuser=0",
+          "changelog": "1.added actual translation not ai anymore 2.removed the need of any api key 3.a full code rework"
+        },
         {
           "version": "1.0.3",
           "date": "Mar 2, 2025",
